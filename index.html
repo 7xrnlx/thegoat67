@@ -92,17 +92,40 @@
             z-index:9999;
             background:linear-gradient(135deg, var(--green-dark), var(--green));
             color:#fff;
-            transition:opacity .5s ease;
+            transition:opacity .35s ease;
         }
-        .spinner{
-            width:72px;height:72px;
-            border:7px solid rgba(250,204,21,.2);
-            border-top:7px solid var(--gold);
-            border-radius:50%;
-            animation:spin 1.1s linear infinite;
-            margin-bottom:18px;
+
+        .loader {
+            width: 84px;
+            height: 84px;
+            position: relative;
+            margin-bottom: 18px;
         }
-        @keyframes spin{to{transform:rotate(360deg)}}
+
+        .loader::before,
+        .loader::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 6px solid transparent;
+        }
+
+        .loader::before {
+            border-top-color: var(--gold);
+            border-right-color: rgba(250,204,21,.35);
+            animation: spin 1s linear infinite;
+        }
+
+        .loader::after {
+            inset: 14px;
+            border-bottom-color: rgba(255,255,255,.8);
+            border-left-color: rgba(255,255,255,.25);
+            animation: spinReverse .85s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes spinReverse { to { transform: rotate(-360deg); } }
 
         section{
             display:none;
@@ -340,11 +363,10 @@
 </nav>
 
 <div id="transition">
-    <div class="spinner"></div>
+    <div class="loader"></div>
     <p style="font-size:1.2rem;font-weight:600;">Loading...</p>
 </div>
 
-<!-- HOME -->
 <section id="home" class="active">
     <div class="hero">
         <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655'); opacity:1;"></div>
@@ -404,7 +426,6 @@
     </div>
 </section>
 
-<!-- ACADEMICS -->
 <section id="academics">
     <div class="section-title-wrap">
         <h2>Academics</h2>
@@ -417,7 +438,6 @@
     </div>
 </section>
 
-<!-- ATHLETICS -->
 <section id="athletics">
     <div class="section-title-wrap">
         <h2>Athletics</h2>
@@ -430,7 +450,6 @@
     </div>
 </section>
 
-<!-- NEWS -->
 <section id="news">
     <div class="section-title-wrap">
         <h2>News</h2>
@@ -443,7 +462,6 @@
     </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
     <div class="section-title-wrap">
         <h2>About Us</h2>
@@ -456,7 +474,6 @@
     </div>
 </section>
 
-<!-- MODAL -->
 <div id="confirm-modal">
     <div class="modal-content">
         <h3>Are you sure you want to leave this site?</h3>
@@ -510,7 +527,9 @@
 
     function openSignup() {
         hideConfirmModal();
-        const win = window.open('about:blank', '_blank', 'width=1500,height=940');
+
+        // New tab, not a window
+        const win = window.open('about:blank', '_blank');
         if (!win) return;
 
         win.document.write(`
