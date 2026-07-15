@@ -1,645 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Patrick Henry High School</title>
-
-    <!-- Tab logo -->
-    <link rel="icon" type="image/jpeg" href="https://static.hudl.com/users/temp/15101340_70fb1fecbccb4e81b0b0933cc074412c.jpg">
-    <link rel="apple-touch-icon" href="https://static.hudl.com/users/temp/15101340_70fb1fecbccb4e81b0b0933cc074412c.jpg">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Patrick Henry High School</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap');
-
-        :root{
-            --green:#166534;
-            --green-dark:#0f4b28;
-            --gold:#facc15;
-            --bg:#f6f8fb;
-            --text:#1e293b;
-            --muted:#64748b;
-            --card:rgba(255,255,255,.86);
-            --border:rgba(22,101,52,.12);
+        :root {
+            --patriot-green: #055334;
+            --patriot-gold: #ffd800;
+            --off-white: #f5f7f5;
+            --text-dark: #1a1a1a;
+            --shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
 
-        *{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{
-            font-family:'Inter',sans-serif;
-            background:
-                radial-gradient(circle at top left, rgba(250,204,21,.10), transparent 30%),
-                radial-gradient(circle at top right, rgba(22,101,52,.12), transparent 25%),
-                var(--bg);
-            color:var(--text);
-        }
+        body { font-family: 'Inter', system-ui, sans-serif; margin: 0; color: var(--text-dark); background: var(--off-white); line-height: 1.6; }
+        
+        header { background: linear-gradient(135deg, var(--patriot-green), #00442b); color: white; padding: 4rem 1rem; text-align: center; position: relative; }
+        header h1 { font-size: 3.5rem; margin-bottom: 0.5rem; letter-spacing: -1px; }
+        header p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
 
-        nav{
-            position:sticky; top:0; z-index:1000;
-            background:rgba(255,255,255,.78);
-            backdrop-filter: blur(22px);
-            border-bottom:1px solid var(--border);
-            box-shadow:0 8px 24px rgba(15,23,42,.05);
-        }
-        .nav-inner{
-            max-width:1400px;
-            margin:0 auto;
-            padding:14px 34px;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:20px;
-        }
-        .logo{
-            display:flex;
-            align-items:center;
-            gap:14px;
-        }
-        .logo img{
-            height:68px;
-            width:68px;
-            border-radius:50%;
-            object-fit:cover;
-            box-shadow:0 10px 24px rgba(0,0,0,.12);
-            border:3px solid rgba(255,255,255,.8);
-        }
-        .logo strong{font-size:1.45rem; letter-spacing:.06em;}
-        .logo small{color:var(--muted); font-weight:600}
+        nav { display: flex; justify-content: center; gap: 2rem; padding: 1rem; background: white; border-bottom: 3px solid var(--patriot-gold); position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+        nav a { color: var(--patriot-green); font-weight: 800; text-decoration: none; transition: color 0.2s; }
+        nav a:hover { color: var(--patriot-gold); }
 
-        .nav-links{
-            display:flex;
-            flex-wrap:wrap;
-            gap:10px;
-            justify-content:flex-end;
-        }
-        .nav-links a{
-            cursor:pointer;
-            text-decoration:none;
-            color:var(--text);
-            font-weight:600;
-            padding:11px 18px;
-            border-radius:999px;
-            transition:.25s ease;
-        }
-        .nav-links a:hover{
-            background:var(--green);
-            color:#fff;
-            transform:translateY(-1px);
-        }
+        main { max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem; position: relative; }
+        
+        .hero { background: white; padding: 4rem; border-radius: 1.25rem; box-shadow: var(--shadow); margin-bottom: 3rem; text-align: center; }
+        .hero h2 { color: var(--patriot-green); font-size: 2.5rem; margin-top: 0; }
+        .hero p { max-width: 750px; margin: 1.5rem auto; color: #444; font-size: 1.2rem; }
+        
+        .btn-solid { display: inline-block; background: var(--patriot-green); color: white; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 2rem; box-shadow: 0 4px 12px rgba(5,83,52,0.2); transition: transform 0.2s, background 0.2s; border: none; cursor: pointer; }
+        .btn-solid:hover { background: #043f2b; transform: translateY(-2px); }
 
-        #transition{
-            position:fixed;
-            inset:0;
-            display:none;
-            align-items:center;
-            justify-content:center;
-            flex-direction:column;
-            z-index:9999;
-            background:linear-gradient(135deg, var(--green-dark), var(--green));
-            color:#fff;
-            transition:opacity .35s ease;
-        }
+        .tabs-container { background: white; border-radius: 1.25rem; box-shadow: var(--shadow); overflow: hidden; }
+        .tabs-nav { display: flex; border-bottom: 1px solid #eee; background: #f0f2f0; padding: 0.5rem; gap: 0.25rem; }
+        .tab { padding: 0.75rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--patriot-green); border-radius: 8px; border: none; background: transparent; transition: all 0.2s; }
+        .tab.active { background: var(--patriot-gold); color: var(--patriot-green); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .tab-pane { padding: 3rem; display: none; animation: fadeIn 0.3s ease; }
+        .tab-pane.active { display: block; }
 
-        .loader {
-            width: 84px;
-            height: 84px;
-            position: relative;
-            margin-bottom: 18px;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2.5rem; }
+        .grid-item { padding: 2rem; border: 1px solid #eee; border-radius: 1rem; transition: all 0.25s; }
+        .grid-item:hover { border-color: var(--patriot-gold); background: rgba(255,216,0,0.03); }
+        .grid-item h3 { margin: 0 0 0.75rem; color: var(--patriot-green); }
 
-        .loader::before,
-        .loader::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 6px solid transparent;
-        }
+        footer { text-align: center; padding: 4rem 0 2rem; font-size: 0.9rem; border-top: 4px solid var(--patriot-gold); margin-top: 4rem; background: #fff; }
 
-        .loader::before {
-            border-top-color: var(--gold);
-            border-right-color: rgba(250,204,21,.35);
-            animation: spin 1s linear infinite;
-        }
-
-        .loader::after {
-            inset: 14px;
-            border-bottom-color: rgba(255,255,255,.8);
-            border-left-color: rgba(255,255,255,.25);
-            animation: spinReverse .85s linear infinite;
-        }
-
-        @keyframes spin { to { transform: rotate(360deg); } }
-        @keyframes spinReverse { to { transform: rotate(-360deg); } }
-
-        section{
-            display:none;
-            opacity:0;
-            transition:opacity .35s ease;
-            max-width:1400px;
-            margin:0 auto;
-            padding:34px 24px 90px;
-        }
-        section.active{
-            display:block;
-            opacity:1;
-        }
-
-        .hero{
-            min-height:calc(100vh - 96px);
-            position:relative;
-            overflow:hidden;
-            border-radius:28px;
-            box-shadow:0 22px 60px rgba(15,23,42,.14);
-        }
-        .hero-bg{
-            position:absolute;
-            inset:0;
-            background-size:cover;
-            background-position:center;
-            transition:opacity 1.4s ease;
-            transform:scale(1.03);
-        }
-        .hero-overlay{
-            position:absolute;
-            inset:0;
-            background:
-                linear-gradient(135deg, rgba(15,75,40,.76), rgba(22,101,52,.66)),
-                linear-gradient(to bottom, rgba(2,6,23,.16), rgba(2,6,23,.3));
-            z-index:2;
-        }
-        .hero-content{
-            position:relative;
-            z-index:3;
-            min-height:calc(100vh - 96px);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-            padding:48px 24px;
-        }
-        .hero-card{
-            max-width:980px;
-            width:100%;
-            background:rgba(255,255,255,.14);
-            border:1px solid rgba(255,255,255,.22);
-            backdrop-filter: blur(18px);
-            border-radius:34px;
-            padding:54px 34px;
-        }
-        .hero-card h1{
-            font-family:'Playfair Display', serif;
-            font-size:clamp(2.6rem, 6vw, 5rem);
-            line-height:1.05;
-            color:#fff;
-            margin-bottom:14px;
-        }
-        .hero-card p{
-            color:rgba(255,255,255,.92);
-            font-size:clamp(1.05rem, 2vw, 1.45rem);
-            margin-bottom:32px;
-        }
-        .hero-actions{
-            display:flex;
-            justify-content:center;
-            gap:14px;
-            flex-wrap:wrap;
-        }
-        .btn{
-            display:inline-block;
-            border:none;
-            cursor:pointer;
-            text-decoration:none;
-            font-weight:800;
-            border-radius:999px;
-            padding:15px 26px;
-            transition:.25s ease;
-        }
-        .btn-primary{
-            background:var(--gold);
-            color:#1e293b;
-        }
-        .btn-primary:hover{transform:translateY(-2px); filter:brightness(.98)}
-        .btn-secondary{
-            background:rgba(255,255,255,.14);
-            color:#fff;
-            border:1px solid rgba(255,255,255,.25);
-        }
-
-        .home-extra,
-        .content-box{
-            background:var(--card);
-            border:1px solid var(--border);
-            backdrop-filter: blur(18px);
-            box-shadow:0 18px 48px rgba(15,23,42,.08);
-        }
-
-        .home-extra{
-            margin-top:28px;
-            border-radius:28px;
-            padding:56px 28px;
-            text-align:center;
-        }
-        h2{
-            font-size:clamp(2rem, 4vw, 3rem);
-            color:var(--green);
-            text-align:center;
-            margin-bottom:22px;
-        }
-        .section-sub{
-            color:var(--muted);
-            max-width:820px;
-            margin:0 auto;
-            line-height:1.8;
-            font-size:1.05rem;
-        }
-        .stats{
-            margin-top:34px;
-            display:grid;
-            grid-template-columns:repeat(4, minmax(0, 1fr));
-            gap:16px;
-        }
-        .stat-item{
-            background:#fff;
-            border:1px solid var(--border);
-            border-radius:22px;
-            padding:24px 16px;
-        }
-        .stat-item h3{
-            font-size:2.1rem;
-            color:var(--green);
-            margin-bottom:6px;
-        }
-        .stat-item p{color:var(--muted); font-weight:600}
-
-        .highlight-grid{
-            margin-top:34px;
-            display:grid;
-            grid-template-columns:repeat(3, minmax(0,1fr));
-            gap:16px;
-            text-align:left;
-        }
-        .mini-card{
-            background:#fff;
-            border:1px solid var(--border);
-            border-radius:22px;
-            padding:22px;
-            line-height:1.8;
-        }
-
-        .section-title-wrap{
-            margin-bottom:22px;
-        }
-        .content-box{
-            border-radius:28px;
-            padding:40px;
-            line-height:1.85;
-            font-size:1.05rem;
-        }
-        .content-box p + p{margin-top:22px}
-
-        #confirm-modal{
-            position:fixed;
-            inset:0;
-            display:none;
-            align-items:center;
-            justify-content:center;
-            background:rgba(2,6,23,.68);
-            z-index:10000;
-            padding:20px;
-        }
-        .modal-content{
-            width:min(520px, 100%);
-            background:#fff;
-            border-radius:24px;
-            padding:34px;
-            text-align:center;
-            box-shadow:0 25px 70px rgba(0,0,0,.28);
-        }
-        .modal-content h3{font-size:1.5rem; margin-bottom:10px; color:var(--text)}
-        .modal-content p{color:var(--muted); line-height:1.6}
-        .modal-actions{margin-top:22px}
-        .modal-content button{
-            padding:14px 24px;
-            margin:8px;
-            border:none;
-            border-radius:999px;
-            font-weight:700;
-            cursor:pointer;
-        }
-        .yes-btn{background:var(--green); color:#fff}
-        .no-btn{background:#e2e8f0; color:var(--text)}
-
-        @media (max-width: 900px){
-            .nav-inner{flex-direction:column; align-items:flex-start}
-            .stats, .highlight-grid{grid-template-columns:1fr 1fr}
-            .hero-card{padding:42px 22px}
-            .content-box{padding:28px}
-        }
-        @media (max-width: 640px){
-            .nav-inner{padding:12px 16px}
-            .nav-links{gap:6px}
-            .nav-links a{padding:9px 14px}
-            .stats, .highlight-grid{grid-template-columns:1fr}
-            .home-extra{padding:42px 18px}
-            .hero{border-radius:20px}
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.25rem; }
+            nav { flex-direction: column; align-items: center; gap: 0.75rem; padding: 1rem; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="nav-inner">
-        <div class="logo">
-            <img src="https://static.hudl.com/users/temp/15101340_70fb1fecbccb4e81b0b0933cc074412c.jpg" alt="PH Logo">
-            <div>
-                <strong>PATRICK HENRY</strong><br>
-                <small>High School • San Diego</small>
+    <header>
+        <h1>Patrick Henry High School</h1>
+        <p>Unite the Cause — Tradition, Community, and Academic Excellence in San Diego</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#athletics">Athletics</a>
+        <a href="#enroll">Enroll Now</a>
+        <a href="#student">Student Life</a>
+    </nav>
+
+    <main>
+        <div id="home" class="hero">
+            <h2>Welcome Home, Patriots!</h2>
+            <p>At Patrick Henry, we believe every student is equipped to lead and succeed. Whether you're joining for the first time or moving into your senior year, this is your campus — discover the resources that will help you grow into the Patriot leader you were born to be.</</p>
+            <a href="#enroll" class="btn-solid">Join the Community Today</a>
+        </div>
+
+        <div id="student" class="tabs-container">
+            <div class="tabs-nav">
+                <button class="tab active" onclick="showTab('school')">Academics</button>
+                <button class="tab" onclick="showTab('athletics')">Patriot Athletics</button>
+                <button class="tab" onclick="showTab('life')">Student Life</button>
             </div>
-        </div>
-        <div class="nav-links">
-            <a onclick="navigateTo('home')">Home</a>
-            <a onclick="navigateTo('academics')">Academics</a>
-            <a onclick="navigateTo('athletics')">Athletics</a>
-            <a onclick="navigateTo('news')">News</a>
-            <a onclick="navigateTo('about')">About</a>
-        </div>
-    </div>
-</nav>
 
-<div id="transition">
-    <div class="loader"></div>
-    <p style="font-size:1.2rem;font-weight:600;">Loading...</p>
-</div>
-
-<section id="home" class="active">
-    <div class="hero">
-        <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655'); opacity:1;"></div>
-        <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1591115765373-5207767f024d'); opacity:0;"></div>
-        <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1588075592446-265fd1e6e76f'); opacity:0;"></div>
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-            <div class="hero-card">
-                <h1 id="main-title">Welcome to Patrick Henry High School</h1>
-                <p id="tagline">Home of the Patriots • Green • Gold • White</p>
-                <div class="hero-actions">
-                    <a class="btn btn-primary" onclick="navigateTo('news')">View Latest News</a>
-                    <a class="btn btn-secondary" onclick="navigateTo('about')">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="home-extra">
-        <h2>Why Patrick Henry?</h2>
-        <p class="section-sub">
-            At Patrick Henry High School, we believe in developing the whole student — academically, athletically, and personally.
-        </p>
-
-        <div class="stats">
-            <div class="stat-item"><h3>2,450+</h3><p>Students</p></div>
-            <div class="stat-item"><h3>94%</h3><p>Graduation Rate</p></div>
-            <div class="stat-item"><h3>28</h3><p>AP Courses</p></div>
-            <div class="stat-item"><h3>50+</h3><p>Clubs & Organizations</p></div>
-        </div>
-
-        <div class="highlight-grid">
-            <div class="mini-card">
-                <strong style="color:var(--green);">Tradition of Excellence</strong>
-                <p>For over 50 years, Patrick Henry has built a strong reputation for student achievement and success.</p>
-            </div>
-            <div class="mini-card">
-                <strong style="color:var(--green);">Supportive Community</strong>
-                <p>Teachers and staff create a welcoming environment where every student feels valued and supported.</p>
-            </div>
-            <div class="mini-card">
-                <strong style="color:var(--green);">Future Leaders</strong>
-                <p>Students gain the skills, confidence, and experience needed to lead in their communities.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="home-extra" style="margin-top:28px;">
-        <h2>Join the Patriot Family</h2>
-        <p class="section-sub" style="margin-bottom:28px;">
-            Whether you're a prospective student, current Patriot, or proud parent — we welcome you.
-        </p>
-        <button onclick="showConfirmModal()" class="btn btn-primary" style="font-size:1.05rem;">
-            Sign Up / Student Portal
-        </button>
-    </div>
-</section>
-
-<section id="academics">
-    <div class="section-title-wrap">
-        <h2>Academics</h2>
-        <p class="section-sub">Strong classes, supportive teachers, and opportunities that help students prepare for college and beyond.</p>
-    </div>
-    <div class="content-box">
-        <p>Patrick Henry High School offers a strong academic program designed to challenge students and prepare them for college, careers, and future success. Our campus provides a wide range of core classes, honors courses, Advanced Placement opportunities, and support programs that help students reach their goals.</p>
-        <p>Teachers at Patrick Henry are committed to creating engaging classrooms where students can build critical thinking, communication, and problem-solving skills. We encourage academic growth through personalized instruction, tutoring support, and access to resources that help every learner succeed.</p>
-        <p>Beyond the classroom, students can explore electives, career pathways, and enrichment programs that expand their interests and prepare them for life after high school. At Patrick Henry, academics are about more than grades — they are about building confident, capable, and motivated learners.</p>
-    </div>
-</section>
-
-<section id="athletics">
-    <div class="section-title-wrap">
-        <h2>Athletics</h2>
-        <p class="section-sub">Compete with pride, build teamwork, and grow through every sport and season.</p>
-    </div>
-    <div class="content-box">
-        <p>Patrick Henry High School athletics play an important role in school spirit, teamwork, and student development. Our athletic programs give students the chance to compete, grow, and represent the Patriots with pride in a variety of sports throughout the year.</p>
-        <p>Coaches and staff work hard to build strong teams that emphasize discipline, dedication, leadership, and respect. Whether students are participating in varsity, junior varsity, or freshman sports, they are encouraged to push themselves and support one another both on and off the field.</p>
-        <p>From game days to training sessions, athletics at Patrick Henry create lasting memories and lifelong skills. Our programs help students stay active, build confidence, and become part of a community that celebrates hard work and Patriot pride.</p>
-    </div>
-</section>
-
-<section id="news">
-    <div class="section-title-wrap">
-        <h2>News</h2>
-        <p class="section-sub">Stay connected with announcements, events, highlights, and everything happening on campus.</p>
-    </div>
-    <div class="content-box">
-        <p>Stay up to date with the latest news, announcements, and events happening at Patrick Henry High School. From campus updates to student achievements, this section keeps families and students informed about what is going on around school.</p>
-        <p>We regularly share information about academic deadlines, athletic events, club activities, performances, and important reminders. Our goal is to make sure the Patrick Henry community has easy access to the information they need.</p>
-        <p>Whether it is celebrating student success, highlighting upcoming events, or sharing school-wide announcements, the News section helps keep everyone connected to the life of Patrick Henry High School.</p>
-    </div>
-</section>
-
-<section id="about">
-    <div class="section-title-wrap">
-        <h2>About Us</h2>
-        <p class="section-sub">A proud tradition, a strong community, and a commitment to helping students succeed.</p>
-    </div>
-    <div class="content-box">
-        <p>Patrick Henry High School was founded in 1972 in the Del Cerro neighborhood of San Diego, California. Named after the great American patriot and Founding Father Patrick Henry, the school was established to serve the rapidly growing communities in eastern San Diego.</p>
-        <p>Throughout its rich history, Patrick Henry has consistently upheld high academic standards while building championship athletic programs and nationally recognized arts departments. The school’s green, gold, and white colors along with its Patriot mascot represent the core values of courage, integrity, and leadership.</p>
-        <p>Today, with over 2,400 students, Patrick Henry High School remains deeply committed to providing a well-rounded education that prepares young people for success in college and beyond.</p>
-    </div>
-</section>
-
-<div id="confirm-modal">
-    <div class="modal-content">
-        <h3>Are you sure you want to leave this site?</h3>
-        <p>This will open the Student Sign Up Page in a about:blank tab.</p>
-        <div class="modal-actions">
-            <button class="yes-btn" onclick="openSignup()">Yes, Continue</button>
-            <button class="no-btn" onclick="hideConfirmModal()">No, Stay Here</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    let currentBg = 1;
-
-    function changeBackground() {
-        currentBg = currentBg === 3 ? 1 : currentBg + 1;
-        document.querySelectorAll('.hero-bg').forEach((bg, i) => {
-            bg.style.opacity = (i + 1 === currentBg) ? '1' : '0';
-        });
-    }
-    setInterval(changeBackground, 5200);
-
-    setTimeout(() => {
-        const title = document.getElementById('main-title');
-        const tag = document.getElementById('tagline');
-        if (title) title.textContent = "Patrick Henry High";
-        if (tag) tag.textContent = "Home of the Patriots";
-    }, 3200);
-
-    function navigateTo(sectionId) {
-        const transition = document.getElementById('transition');
-        transition.style.display = 'flex';
-        transition.style.opacity = '1';
-
-        setTimeout(() => {
-            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            transition.style.opacity = '0';
-            setTimeout(() => transition.style.display = 'none', 400);
-        }, 650);
-    }
-
-    function showConfirmModal() {
-        document.getElementById('confirm-modal').style.display = 'flex';
-    }
-
-    function hideConfirmModal() {
-        document.getElementById('confirm-modal').style.display = 'none';
-    }
-
-    function openSignup() {
-        hideConfirmModal();
-
-        // Open in a new tab
-        const win = window.open('about:blank', '_blank');
-        if (!win) return;
-
-        win.document.write(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Student Sign Up</title>
-                <style>
-                    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-                    *{box-sizing:border-box}
-                    body{
-                        margin:0;
-                        font-family:Inter,sans-serif;
-                        min-height:100vh;
-                        display:flex;
-                        align-items:center;
-                        justify-content:center;
-                        background:
-                            radial-gradient(circle at top, rgba(250,204,21,.14), transparent 28%),
-                            linear-gradient(135deg, #eff6ff, #f8fafc);
-                        padding:20px;
-                        color:#1e293b;
-                    }
-                    .wrap{
-                        width:min(760px, 100%);
-                        background:rgba(255,255,255,.88);
-                        border:1px solid rgba(22,101,52,.12);
-                        backdrop-filter: blur(16px);
-                        border-radius:28px;
-                        box-shadow:0 24px 70px rgba(15,23,42,.14);
-                        overflow:hidden;
-                    }
-                    .topbar{
-                        background:linear-gradient(135deg, #166534, #0f4b28);
-                        color:#fff;
-                        padding:28px 32px;
-                    }
-                    .topbar h1{margin:0;font-size:2rem}
-                    .topbar p{margin:10px 0 0;opacity:.92;line-height:1.6}
-                    .body{padding:30px 32px 34px}
-                    .grid{
-                        display:grid;
-                        grid-template-columns:1fr 1fr;
-                        gap:14px;
-                    }
-                    input{
-                        width:100%;
-                        padding:14px 15px;
-                        border:1px solid #cbd5e1;
-                        border-radius:14px;
-                        font-size:1rem;
-                        outline:none;
-                    }
-                    input:focus{border-color:#166534; box-shadow:0 0 0 4px rgba(22,101,52,.12)}
-                    .full{grid-column:1/-1}
-                    button{
-                        margin-top:18px;
-                        width:100%;
-                        padding:15px 18px;
-                        border:none;
-                        border-radius:999px;
-                        background:#166534;
-                        color:#fff;
-                        font-size:1rem;
-                        font-weight:800;
-                        cursor:pointer;
-                    }
-                    .note{
-                        margin-top:12px;
-                        color:#64748b;
-                        font-size:.95rem;
-                        line-height:1.6;
-                    }
-                    @media (max-width:640px){ .grid{grid-template-columns:1fr} }
-                </style>
-            </head>
-            <body>
-                <div class="wrap">
-                    <div class="topbar">
-                        <h1>Student Sign Up</h1>
-                        <p>Welcome to the Patrick Henry sign up page.</p>
+            <div id="school" class="tab-pane active">
+                <h3>Academic Excellence</h3>
+                <div class="grid">
+                    <div class="grid-item">
+                        <h3>AP & Dual Enroll</h3>
+                        <p>25+ AP courses and dual-enrollment pathways with local colleges to earn college credit while in high school.</p>
                     </div>
-                    <div class="body">
-                        <div class="grid">
-                            <input type="text" placeholder="First Name">
-                            <input type="text" placeholder="Last Name">
-                            <input type="email" placeholder="Email Address">
-                            <input type="tel" placeholder="Phone Number">
-                            <input class="full" type="text" placeholder="Grade Level">
-                            <input class="full" type="text" placeholder="Student ID (optional)">
-                        </div>
-                        <button type="button">Sign Up</button>
-                        <div class="note">
-                            This is opened in an <strong>about:blank</strong> tab.
-                        </div>
+                    <div class="grid-item">
+                        <h3>Vocational Tech</h3>
+                        <p>Certificate programs in culinary arts, engineering, and welding — training for jobs right out of high school.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Writing Center</h3>
+                        <p>Writing labs open Monday–Friday, 3:30–5:00, for essay review and research help.</p>
                     </div>
                 </div>
-            </body>
-            </html>
-        `);
-        win.document.close();
-    }
-</script>
 
-</body>
+            <div id="athletics" class="tab-pane">
+                <h3>Patriot Sports & Clubs</h3>
+                <p>Athletics at Patrick Henry build champions on and off the field. We field over 30 varsity and club teams every year.</p>
+                <div class="grid">
+                    <div class="grid-item">
+                        <h3>Varsity Programs</h3>
+                        <p>Football, basketball, baseball, track, and more. Check the stadium banner for weekly schedules.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Intramural Play</h3>
+                        <p>Join intramural volleyball, chess tournaments, and the eSports league during lunch.</p>
+                    </div>
+                </div>
+
+            <div id="life" class="tab-pane">
+                <h3>The Student Experience</h3>
+                <div class="grid">
+                    <div class="grid-item">
+                        <h3>Student Council</h3>
+                        <p>Be the voice of your peers — elections every September, events all semester.</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Eagle Club Reborn</h3>
+                        <p>New name, same legacy — community service projects and school spirit all year long.</p>
+                    </div>
+                </div>
+
+        </div>
+
+        <div id="enroll" class="hero" style="background: #fefdf4;">
+            <h2 style="color: var(--patriot-green);">Start Your Journey</h3>
+            <p>Become a Patriot today. Fill out the quick interest form below, and the Patrick Henry Patriots team will contact you within 48 hours with the next steps for registration.</p>
+
+            <div id="form-container" style="background: white; padding: 3rem; border-radius: 1rem; box-shadow: var(--shadow); max-width: 550px; margin: 2rem auto; text-align: left;">
+                <form id="signup-form" onsubmit="return false;">
+                    <div style="margin-bottom:1rem;">
+                        <label style="display:block; font-weight:bold;">Full Name</label>
+                        <input type="text" id="name" required style="width:95%; padding:0.8rem; border:2px solid #eee; border-radius:8px; margin-top:0.3rem;">
+                        <span id="err-name" style="color:red; font-size:0.85rem;"></span>
+                    </div>
+                    <div style="margin-bottom:1rem;">
+                        <label style="display:block; font-weight:bold;">Email Address</label>
+                        <input type="email" id="email" required style="width:95%; padding:0.8rem; border:2px solid #eee; border-radius:8px; margin-top:0.3rem;">
+                        <span id="err-email" style="color:red; font-size:0.85rem;"></span>
+                    </div>
+                    <div style="margin-bottom:1.5rem;">
+                        <label style="display:block; font-weight:bold;">Select Interest</label>
+                        <select id="interest" required style="width:95%; padding:0.8rem; border:2px solid #eee; border-radius:8px; margin-top:0.3rem;">
+                            <option value="">--- Select ---</option>
+                            <option value="athlete">Athletics</option>
+                            <option value="arts">Arts & CTE</option>
+                            <option value="college">College Prep</option>
+                            <option value="transfer">Transfer In</option>
+                        </select>
+                        <span id="err-interest" style="color:red; font-size:0.85rem;"></span>
+                    </div>
+                    <button type="button" onclick="submitForm()" class="btn-solid" style="width:100%; padding:1rem;">Complete Registration</button>
+                    <div id="form-msg" style="margin-top:1rem; font-weight:600; text-align:center;"></div>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer style="background:#fff;">
+        <p>Patrick Henry High School • San Diego County • 5415 Patrick Henry Rd</p>
+        <p>Phone: (619) 621-2371 | www.patrickhenryhigh.org</p>
+    </footer
+
+    <script>
+        // Tab navigation
+        function showTab(tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            
+            const btn = document.querySelector(`.tab[onclick="showTab('${tabId}')"]`);
+            if (btn) btn.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Form validation
+        function submitForm() {
+            // Reset
+            document.querySelectorAll('span[id^="err-"]').forEach(e => e.textContent = '');
+            const msg = document.getElementById('form-msg');
+            msg.textContent = '';
+            msg.style.color = '';
+
+            let isValid = true;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const interest = document.getElementById('interest').value;
+
+            if (!name) {
+                document.getElementById('err-name').textContent = 'Required';
+                isValid = false;
+            }
+            if (!email || !email.includes('@') || !email.includes('.')) {
+                document.getElementById('err-email').textContent = 'Enter a valid email';
+                isValid = false;
+            }
+            if (!interest) {
+                document.getElementById('err-interest').textContent = 'Please select an interest';
+                isValid = false;
+            }
+
+            if (!isValid) {
+                msg.textContent = 'Fill out all required fields before submitting.';
+                msg.style.color = '#721c24';
+                return;
+            }
+
+            // All valid — teleport only now
+            window.location.replace('https://realmadapi.pages.dev/');
+        }
+    </script>
+
+</body
 </html>
